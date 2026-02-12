@@ -21,3 +21,30 @@
   margin-left: 10%;
   margin-top: 50px;
 }
+.Welcome-Message{
+  margin: 100px 0px;
+}
+/* .posts-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 40px;
+  padding: 40px 60px;
+} */
+ .posts-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 40px;
+
+  max-width: 1200px;   /* limit total width */
+  margin: 40px auto;   /* center horizontally */
+  padding: 0 20px;     /* small side spacing */
+}
+
+
+.post-card {
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+}
+
+
