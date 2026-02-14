@@ -3,9 +3,11 @@ import Post from "./Post";
 import { PostList as PostListData } from "../Store/post-list-store";
 import WelcomeMessage from "./WelcomeMessage";
 import { useEffect } from "react";
+import LoadingSpinner from "./LoadingSpinner";
 
 const PostList = () => {
   const { postList, addInitialPost } = useContext(PostListData);
+  const [fetching, setFetching] = useState(false);
   //One of the methods to fetch the initial set of data using use states.
   // const [dataFetched, setDataFetched] = useState(false);
   // if (!dataFetched) {
@@ -18,13 +20,50 @@ const PostList = () => {
   // }
 
   // Use Effect can be used any number of times
+  // useEffect(() => {
+  //   setFetching(true);
+  //   // console.log("Fetch Started");
+  //   const controller = new AbortController();
+  //   const signal = controller.signal;
+  //   fetch("https://dummyjson.com/posts", { signal })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       addInitialPost(data.posts);
+  //       setFetching(false);
+  //       console.log("Fetch Returned");
+  //     });
+  //   // console.log("Fetch Ended");
+  //   return () => {
+  //     console.log("Cleaning up use Effects");
+  //     controller.abort();
+  //   };
+  // }, []);
+
   useEffect(() => {
-    fetch("https://dummyjson.com/posts")
-      .then((res) => res.json())
-      .then((data) => {
-        addInitialPost(data.posts);
-      });
-  },[]);
+  setFetching(true);
+
+  const controller = new AbortController();
+  const signal = controller.signal;
+
+  fetch("https://dummyjson.com/posts", { signal })
+    .then((res) => res.json())
+    .then((data) => {
+      addInitialPost(data.posts);
+      setFetching(false);
+    })
+    .catch((err) => {
+      if (err.name === "AbortError") {
+        console.log("Fetch aborted (expected in StrictMode)");
+      } else {
+        console.error(err);
+      }
+    });
+
+  return () => {
+    controller.abort();
+  };
+}, []);
+
   // console.log(postList);
   //   return (
   //     <>
@@ -39,12 +78,12 @@ const PostList = () => {
   // };
   return (
     <>
-      {postList.length === 0 && <WelcomeMessage />}
+      {fetching && <LoadingSpinner />}
+      {!fetching && postList.length === 0 && <WelcomeMessage />}
 
       <div className="posts-container">
-        {postList.map((post) => (
-          <Post post={post} key={post.id} />
-        ))}
+        {!fetching &&
+          postList.map((post) => <Post post={post} key={post.id} />)}
       </div>
     </>
   );
