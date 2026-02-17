@@ -6,8 +6,7 @@ import { useEffect } from "react";
 import LoadingSpinner from "./LoadingSpinner";
 
 const PostList = () => {
-  const { postList, addInitialPost } = useContext(PostListData);
-  const [fetching, setFetching] = useState(false);
+  const { postList, fetching } = useContext(PostListData);
   //One of the methods to fetch the initial set of data using use states.
   // const [dataFetched, setDataFetched] = useState(false);
   // if (!dataFetched) {
@@ -38,33 +37,6 @@ const PostList = () => {
   //     controller.abort();
   //   };
   // }, []);
-
-useEffect(() => {
-  if (postList.length > 0) return;  // ✅ Prevent refetch
-
-  setFetching(true);
-
-  const controller = new AbortController();
-
-  fetch("https://dummyjson.com/posts", {
-    signal: controller.signal,
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      addInitialPost(data.posts);
-      setFetching(false);
-    })
-    .catch((err) => {
-      if (err.name !== "AbortError") {
-        console.error(err);
-      }
-    });
-
-  return () => {
-    controller.abort();
-  };
-}, []);
-
 
   // console.log(postList);
   //   return (
