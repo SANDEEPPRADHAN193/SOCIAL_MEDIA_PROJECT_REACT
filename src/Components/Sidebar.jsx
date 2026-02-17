@@ -1,8 +1,8 @@
 const Sidebar = ({ selectedTab, setSelectedTab }) => {
   return (
     <div
-      className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark sidebar"
-      style={{ width: "180px" }}
+      className="d-flex flex-column flex-shrink-0 sidebar"
+      // style={{ width: "180px" }}
     >
       <a
         href="/"
@@ -16,97 +16,38 @@ const Sidebar = ({ selectedTab, setSelectedTab }) => {
         >
           <use xlinkHref="#bootstrap" />
         </svg>
-        <span className="fs-4">Sidebar</span>
+        <span className="fs-4">
+          <div className="sidebar-logo">
+            <div className="logo-icon">S</div>
+            <span className="logo-text">SocialApp</span>
+          </div>
+        </span>
       </a>
 
       <hr />
 
-      <ul className="nav nav-pills flex-column mb-auto">
-        <li
-          className="nav-item"
-          onClick={() => {
-            setSelectedTab("Home");
-          }}
-        >
-          <a
-            href="#"
-            className={`nav-link text-white ${selectedTab === "Home" && "active"}`}
-            aria-current="page"
+      <ul className="nav flex-column mb-auto sidebar-nav">
+        <li>
+          <button
+            type="button"
+            onClick={() => setSelectedTab("Home")}
+            className={`nav-btn ${selectedTab === "Home" ? "active" : ""}`}
           >
-            <svg
-              className="bi pe-none me-2"
-              width="16"
-              height="16"
-              aria-hidden="true"
-            >
-              <use xlinkHref="#home" />
-            </svg>
             Home
-          </a>
+          </button>
         </li>
 
-        <li
-          onClick={() => {
-            setSelectedTab("Create Post");
-          }}
-        >
-          <a
-            href="#"
-            className={`nav-link text-white ${selectedTab === "Create Post" && "active"}`}
+        <li>
+          <button
+            type="button"
+            onClick={() => setSelectedTab("Create Post")}
+            className={`nav-btn ${
+              selectedTab === "Create Post" ? "active" : ""
+            }`}
           >
-            <svg
-              className="bi pe-none me-2"
-              width="16"
-              height="16"
-              aria-hidden="true"
-            >
-              <use xlinkHref="#speedometer2" />
-            </svg>
             Create Post
-          </a>
+          </button>
         </li>
-
-        {/* <li>
-          <a href="#" className="nav-link text-white">
-            <svg
-              className="bi pe-none me-2"
-              width="16"
-              height="16"
-              aria-hidden="true"
-            >
-              <use xlinkHref="#table" />
-            </svg>
-            Orders
-          </a>
-        </li>
-
-        <li>
-          <a href="#" className="nav-link text-white">
-            <svg
-              className="bi pe-none me-2"
-              width="16"
-              height="16"
-              aria-hidden="true"
-            >
-              <use xlinkHref="#grid" />
-            </svg>
-            Products
-          </a>
-        </li>
-
-        <li>
-          <a href="#" className="nav-link text-white">
-            <svg
-              className="bi pe-none me-2"
-              width="16"
-              height="16"
-              aria-hidden="true"
-            >
-              <use xlinkHref="#people-circle" />
-            </svg>
-            Customers
-          </a>
-        </li> */}
       </ul>
 
       <hr />

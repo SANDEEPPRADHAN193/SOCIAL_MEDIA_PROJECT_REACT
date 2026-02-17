@@ -39,22 +39,23 @@ const PostList = () => {
   //   };
   // }, []);
 
-  useEffect(() => {
+useEffect(() => {
+  if (postList.length > 0) return;  // ✅ Prevent refetch
+
   setFetching(true);
 
   const controller = new AbortController();
-  const signal = controller.signal;
 
-  fetch("https://dummyjson.com/posts", { signal })
+  fetch("https://dummyjson.com/posts", {
+    signal: controller.signal,
+  })
     .then((res) => res.json())
     .then((data) => {
       addInitialPost(data.posts);
       setFetching(false);
     })
     .catch((err) => {
-      if (err.name === "AbortError") {
-        console.log("Fetch aborted (expected in StrictMode)");
-      } else {
+      if (err.name !== "AbortError") {
         console.error(err);
       }
     });
@@ -63,6 +64,7 @@ const PostList = () => {
     controller.abort();
   };
 }, []);
+
 
   // console.log(postList);
   //   return (

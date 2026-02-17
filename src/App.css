@@ -1,4 +1,4 @@
-.app-container {
+/* .app-container {
   display: flex;
 }
 .content {
@@ -6,10 +6,47 @@
 }
 .sidebar {
   min-height: 800px;
+} */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f5f7fa;
 }
-.post-card {
+
+/* .app-container > .sidebar {
+  width: 250px;
+} */
+
+.content {
+  flex: 1;
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+/* .sidebar {
+  background: white;
+  padding: 1.5rem;
+  border-right: 1px solid #eaeaea;
+  min-height: 100vh;
+} */
+
+/* .post-card {
   margin: 20px 50px;
+} */
+ .post-card {
+  border: none;
+  border-radius: 16px;
+  padding: 1.2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  transition: 0.3s;
+  background: white;
 }
+
+.post-card:hover {
+  transform: translateY(-4px);
+}
+
 .hashtag {
   margin: 0px 3px;
 }
@@ -81,4 +118,231 @@
   letter-spacing: 0.5px;
 }
 
+/* Center wrapper */
+.create-post-wrapper {
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+}
+
+/* Card design */
+.create-post-card {
+  width: 100%;
+  max-width: 600px;
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+  transition: 0.3s;
+}
+
+.create-post-card:hover {
+  transform: translateY(-3px);
+}
+
+/* Title */
+.form-title {
+  font-weight: 600;
+  color: #333;
+}
+
+/* Rounded inputs */
+.form-control {
+  border-radius: 10px !important;
+  padding: 0.6rem 0.9rem;
+}
+
+/* Custom button */
+.custom-submit-btn {
+  background: linear-gradient(135deg, #4f46e5, #3b82f6);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 0.7rem;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.custom-submit-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* Sidebar Layout */
+.sidebar {
+  width: 260px;
+  background: #111827; /* modern dark slate */
+  color: white;
+  padding: 2rem 1.5rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Logo / Title */
+.sidebar .fs-4 {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Navigation */
+.sidebar-nav {
+  margin-top: 2rem;
+}
+
+.nav-btn {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: #d1d5db;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+/* Hover Effect */
+.nav-btn:hover {
+  background: #1f2937;
+  color: white;
+  transform: translateX(4px);
+}
+
+/* Active State */
+.nav-btn.active {
+  background: linear-gradient(135deg, #4f46e5, #3b82f6);
+  color: white;
+}
+
+/* Divider */
+.sidebar hr {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+/* Dark Modern Header */
+.modern-header {
+  height: 70px;
+  background: #111827; /* SAME as sidebar */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+}
+
+/* Title */
+.app-title {
+  margin: 0;
+  font-weight: 600;
+  color: white;
+}
+
+/* Right section */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Search */
+.modern-search {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #1f2937;
+  color: white;
+  outline: none;
+  transition: 0.2s ease;
+  min-width: 220px;
+}
+
+.modern-search::placeholder {
+  color: #9ca3af;
+}
+
+.modern-search:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.25);
+}
+
+/* Login button */
+.login-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: 8px;
+  transition: 0.2s ease;
+}
+
+.login-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Sign up button */
+.signup-btn {
+  background: linear-gradient(135deg, #4f46e5, #3b82f6);
+  color: white;
+  border: none;
+  padding: 0.45rem 1rem;
+  border-radius: 8px;
+  transition: 0.2s ease;
+}
+
+.signup-btn:hover {
+  opacity: 0.9;
+}
+
+/* Profile */
+.profile-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4f46e5, #3b82f6);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 2rem;
+}
+
+.logo-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #4f46e5, #3b82f6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: white;
+  font-size: 18px;
+}
+
+.logo-text {
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+}
+.delete-btn {
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.delete-btn:hover {
+  transform: scale(1.15);
+}
 
