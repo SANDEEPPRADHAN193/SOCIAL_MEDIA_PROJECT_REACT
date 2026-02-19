@@ -20,9 +20,8 @@
 .content {
   flex: 1;
   padding: 2rem;
-  max-width: 900px;
-  margin: 0 auto;
 }
+
 /* .sidebar {
   background: white;
   padding: 1.5rem;
@@ -191,7 +190,9 @@
 }
 
 .nav-btn {
+  display: block;              /* 🔥 VERY IMPORTANT */
   width: 100%;
+  text-decoration: none;       /* 🔥 remove underline */
   background: transparent;
   border: none;
   color: #d1d5db;
@@ -202,6 +203,7 @@
   font-weight: 500;
   transition: all 0.2s ease;
 }
+
 
 /* Hover Effect */
 .nav-btn:hover {

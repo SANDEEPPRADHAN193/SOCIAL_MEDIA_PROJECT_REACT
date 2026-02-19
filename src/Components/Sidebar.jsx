@@ -1,11 +1,16 @@
-const Sidebar = ({ selectedTab, setSelectedTab }) => {
+import { NavLink } from "react-router-dom";
+
+
+const Sidebar = () => {
+  //{ selectedTab, setSelectedTab }
   return (
     <div
       className="d-flex flex-column flex-shrink-0 sidebar"
       // style={{ width: "180px" }}
     >
-      <a
-        href="/"
+      <NavLink
+        to="/"
+        end
         className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
       >
         <svg
@@ -22,31 +27,28 @@ const Sidebar = ({ selectedTab, setSelectedTab }) => {
             <span className="logo-text">SocialApp</span>
           </div>
         </span>
-      </a>
+      </NavLink>
 
       <hr />
 
       <ul className="nav flex-column mb-auto sidebar-nav">
         <li>
-          <button
-            type="button"
-            onClick={() => setSelectedTab("Home")}
-            className={`nav-btn ${selectedTab === "Home" ? "active" : ""}`}
+          <NavLink
+            to="/"
+            end
+            className={({ isActive }) => `nav-btn ${isActive ? "active" : ""}`}
           >
             Home
-          </button>
+          </NavLink>
         </li>
 
         <li>
-          <button
-            type="button"
-            onClick={() => setSelectedTab("Create Post")}
-            className={`nav-btn ${
-              selectedTab === "Create Post" ? "active" : ""
-            }`}
+          <NavLink
+            to="/create-post"
+            className={({ isActive }) => `nav-btn ${isActive ? "active" : ""}`}
           >
             Create Post
-          </button>
+          </NavLink>
         </li>
       </ul>
 
